@@ -12,7 +12,7 @@ categories: jekyll update
 Приведение типов подразделяют на две группы: явное (выполняет программист) и
 неявное (выполняет компилятор).
 
-![альт](https://image.freepik.com/free-icon/no-translate-detected_318-45356.jpg)
+![Иерархия приведения типов](https://github.com/olya-lem/olya-lem.github.io/blob/master/_posts/casting_paint.PNG)
 
 **Неявное приведение (Promotion)**:
 
@@ -145,7 +145,7 @@ qDebug() << reinterpret_cast<int*> (a);
 
 Пример:
 
-![]("_posts\ex.png")
+![](https://github.com/olya-lem/olya-lem.github.io/blob/master/_posts/ex.png)
 
 Отличие – проверка на принадлежность объекта, на который ссылается А, классу В.
 Для проверки исп. информация о типах времени выполнения(RTTI), поведение которой
