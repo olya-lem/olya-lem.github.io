@@ -28,7 +28,7 @@ categories: jekyll update
 
 Приведения типов между классами обычно называют:
 
-![Виды приведения типов](https://cloud.mail.ru/public/Bf2S/2P6vV7edp/1.PNG)
+![Виды приведения типов](https://cloud.mail.ru/public/Bf2S/2P6vV7edp)
 
 Работа происходит не с самими объектами, а с указателями (ссылками) на них.
 Поэтому операция приведения к ожидаемому типу (если оно выполнимо) на этапе
@@ -46,7 +46,7 @@ categories: jekyll update
 к полиморфному объекту посредством добавления указателя на этот специальный
 объект к виртуальной таблице (vrtb) класса.
 
-![Информация о типе объекта](https://cloud.mail.ru/public/2aXa/cPo4XwbAR/2.PNG)
+![Информация о типе объекта](https://cloud.mail.ru/public/2aXa/cPo4XwbAR)
 
 Для использования средств точного динамического определения типов к программе
 необходимо подключить файл typeinfo.h.
@@ -67,10 +67,10 @@ categories: jekyll update
 
 -   typeid(null_ptr) - исключение std::bad_typeid.
 
-![Пример](https://cloud.mail.ru/public/4BuT/eDLd5AbE5/3.PNG)
+![Пример](https://cloud.mail.ru/public/4BuT/eDLd5AbE5)
 
 Иногда используют безопасность dynamic_cast (возврат 0 при невозможности
 приведения) для вариативного поведения кода в зависимости от типа, что лучше
 реализуется через виртуальные функции.
 
-![Пример](https://cloud.mail.ru/public/A1f5/aM1k5yfNM/4.PNG)
+![Пример](https://cloud.mail.ru/public/A1f5/aM1k5yfNM)
