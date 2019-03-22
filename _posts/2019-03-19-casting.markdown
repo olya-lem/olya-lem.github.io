@@ -12,7 +12,7 @@ categories: jekyll update
 Приведение типов подразделяют на две группы: явное (выполняет программист) и
 неявное (выполняет компилятор).
 
-![Иерархия приведения типов](https://github.com/olya-lem/olya-lem.github.io/blob/master/_posts/casting_paint.PNG)
+![Иерархия приведения типов](https://yadi.sk/i/3bSrOjfXo_2IZg)
 
 **Неявное приведение (Promotion)**:
 
@@ -145,7 +145,27 @@ qDebug() << reinterpret_cast<int*> (a);
 
 Пример:
 
-![](https://github.com/olya-lem/olya-lem.github.io/blob/master/_posts/ex.png)
+```css
+class A
+{
+	virtual void func();
+};
+
+class B: public A {};
+
+A *a = new class A;
+B *b = (B*) a; //C style of casting
+
+A *aa = new class A;
+B *bb = static_cast<B*>(aa); //C++ style of casting
+B *cc = dynamic_cast<B*>(aa);
+B *dd = reinterpret_cast<B*>(aa);
+
+class C:public QObject{};
+class D:public QObject {};
+C *ccc = new class C;
+D *ddd = qobject_cast<D*> (ccc); // QT style of casting
+```
 
 Отличие – проверка на принадлежность объекта, на который ссылается А, классу В.
 Для проверки исп. информация о типах времени выполнения(RTTI), поведение которой
@@ -160,7 +180,12 @@ QT предоставляет свое средство для этой цели
 связанную с экземплярами объектов. Для dynamic_cast компилятор автоматически
 связывает ее с таблицей виртуальных методов.
 
- 
+[Г. Шилдт, Динамическая идентификация и приведение типов. Самоучитель C++](http://khpi-iip.mipk.kharkiv.edu/library/pgm/shildt/glava12.pdf)
+[O. Goffart, Qt MOC. How Qt Signals and Slots Work.,» 2012, 2014](https://habrahabr.ru/post/214379/)
+[Синтаксис: приведение типов данных в C и C++](http://cppstudio.com/post/5343/)
+[Приведение типов C++/QT](http://www.forum.crossplatform.ru/index.php?showtopic=1056)
+[Type conversions](http://www.cplusplus.com/doc/tutorial/typecasting/)
+[Л. Кузина, Изучаем С++. Приведение типов в C++. Методическая разработка](http://al.cs.msu.su/files/kuzina_cpp_typecasting.pdf)
 
  
 
