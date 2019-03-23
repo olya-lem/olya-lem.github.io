@@ -1,0 +1,103 @@
+---
+date: '2019-03-18 20:58:18 +0300'
+layout: post
+categories: jekyll update
+---
+
+Динамическая идентификация типа данных
+======================================
+
+(Run Time Type Information - RTTI).
+-----------------------------------
+
+**RTTI – механизм получения и использования информации о типе объекта на этапе
+выполнения программы**, позволяет:
+
+-   определить тип объекта во время выполнения программы;
+
+-   проверить, является ли некоторый объект объектом заданного типа;
+
+-   сравнить типы двух данных объектов.
+
+В объектно-ориентированных языках (С++) возникают ситуации, когда тип объекта
+при компиляции неизвестен – указатель базового класса используется и как
+указатель на объект базового класса, и как указатель на объект  производного от
+него (полиморфизм).
+
+ 
+
+Приведения типов между классами обычно называют:
+
+ 
+
+![Виды приведения типов](https://downloader.disk.yandex.ru/preview/64f5ee95a057613e2ee5ac93f31e461f02441a8b85c88b17511d2be4ec035dfd/5c9561bc/L1nzrgyrvDKIf7UHMIjbo0hiezADIgYY9IiPJFASJIrvzfMPU8lzXnAsoqtJhQkT-qG5OCxz_Xho0O4mxSBzXQ%3D%3D?uid=0&filename=1.PNG&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=1920x902)
+
+Работа происходит не с самими объектами, а с указателями (ссылками) на них.
+Поэтому операция приведения к ожидаемому типу (если оно выполнимо) на этапе
+выполнения программы очень полезна. Для этого предназначена операция -
+ [dynamic_cast](#_dynamic_cast_–_безопасное), который непосредственно относится
+к RTTI.  
+
+Наиболее распространённые реализации механизма RTTI: таблица указателей на
+объекты (С++) и хранение информации об объекте в памяти вместе с ним. Т.о.
+определение типа сводится к поиску в таблице или просмотру дополнительной
+информации.
+
+Требование полиморфности к dynamic_cast облегчает поиск необходимой информации о
+типе объекта: специальный объект с информацией о типе (type_info) прикрепляется
+к полиморфному объекту посредством добавления указателя на этот специальный
+объект к виртуальной таблице (vrtb) класса.
+
+![Информация о типе объекта](https://downloader.disk.yandex.ru/preview/a1dd5165df4a12fec83e69142833590339a4a87a017d3c870f0a3fc663f19f79/5c9561e5/jZBxV3kIGlJQbFymn2MgQ0hiezADIgYY9IiPJFASJIqJNCq2XI1UAGPhz1P5-k2svJbraAvasz7uXVqYMMdn7A%3D%3D?uid=0&filename=2.PNG&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=1920x902)
+
+Для использования средств точного динамического определения типов к программе
+необходимо подключить файл typeinfo.h.
+
+**Typeid ( typeinfo.h ):**
+
+-   позволяет проверить тип выражения;
+
+-   typeid(object) возвращает ссылку на пост. объект типа type_info, который и
+    описывает тип object;
+
+-   определены операторы сравнения  ==,   !=  с базовыми типами посредством
+    typeid(built_in);
+
+-   определена функция const char\* name(), возвращающая указатель на имя типа;
+
+-   в случае полиморфного базового класса возвращает тип реального объекта;
+
+-   typeid(null_ptr) - исключение std::bad_typeid.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ css
+#include <iostream>
+#include <typeinfo>
+
+class myTypeA{};
+class myTypeB : public myTypeA {};
+class myTypeC : public myTypeB {};
+
+int main() {
+    myTypeA *obj1 = new myTypeA;
+    myTypeA *obj2 = new myTypeB;
+    myTypeA *obj3 = new myTypeC;
+
+    myTypeB *obj4 = new myTypeB;
+    myTypeB *obj5 = new myTypeC;
+
+    myTypeC *obj6 = new myTypeC;
+
+    std::cout << typeid(obj1).name();
+    std::cout << typeid(obj2).name();
+    std::cout << typeid(obj3).name();
+    std::cout << typeid(obj4).name();
+    std::cout << typeid(obj5).name();
+    std::cout << typeid(obj6).name();
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Иногда используют безопасность dynamic_cast (возврат 0 при невозможности
+приведения) для вариативного поведения кода в зависимости от типа, что лучше
+реализуется через виртуальные функции.
+
+![Пример](https://downloader.disk.yandex.ru/preview/08acee0efd56700bb29bc46d4af1175acac8882532331c8d4ff7095ef657043e/5c956484/mBAFSo80CVTDWEukvUzGw7knUmAG0qMlZap-XRmY-kMot1iOEJO9cDGs-R3oeCbppp-Ev7ClymYMqplTVQb_Pg%3D%3D?uid=0&filename=4.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=2048x2048)
