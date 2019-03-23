@@ -1,18 +1,38 @@
 ---
 layout: page
-title: About
 permalink: /about/
+title: About
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+| **Личные данные**                    |                                                          |
+|--------------------------------------|----------------------------------------------------------|
+| Фамилия                              | Лемясева                                                 |
+| Имя                                  | Ольга                                                    |
+| Отчество                             | Викторовна                                               |
+| Пол                                  | Женский                                                  |
+| Дата рождения                        | 13.02.1997                                               |
+|                                      |                                                          |
+| **Образование**                      |                                                          |
+|                                      | 01.04.02 - Прикладная математики и информатика           |
+| Магистрант                           | СарФТИ НИЯУ МИФИ                                         |
+|                                      | 2018-2020                                                |
+|                                      |                                                          |
+|                                      | 01.03.02 - Прикладная математика и информатика           |
+| Бакалавр                             | СарФТИ НИЯУ МИФИ                                         |
+|                                      | 2014-2018                                                |
+|                                      |                                                          |
+| **Опыт работы**                      | отд.0822 ФГУП “РФЯЦ-ВНИИЭФ”                              |
+|                                      | техник                                                   |
+| Производственная практика            | отд.0822 ФГУП “РФЯЦ-ВНИИЭФ”                              |
+|                                      | 04.2018-06.2018                                          |
+|                                      | 09.2017-12.2017                                          |
+| Учебная практика                     | СарФТИ НИЯУ МИФИ                                         |
+|                                      | 06.2016-0.7-2016                                         |
+|                                      |                                                          |
+| **Знание комп. программ/технологий** | MicrosoftOffice, MathCad, Far Manager                    |
+|                                      | C++/Qt, Fortran, FoxPro, Pascal                          |
+|                                      | OpenMP, MPI                                              |
+|                                      | OpenGL, MFC                                              |
+|                                      | VisualStudio, QtCreator, VisualFoxPro                    |
+|                                      | CMake                                                    |
+|                                      | Mercurial, TortouseHG, Jenkins, Git, TortouseGit, GitHub |
